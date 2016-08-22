@@ -25,9 +25,9 @@ def get_authors(root):
         }
 
         # YOUR CODE HERE
-        fnm = author.find('fnm')
-        snm = author.find('snm')
-        email = author.find('email')
+        fnm = author.find('./fnm')
+        snm = author.find('./snm')
+        email = author.find('./email')
         if fnm is not None:
             data['fnm'] = fnm.text
         if snm is not None:
