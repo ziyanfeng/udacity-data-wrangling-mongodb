@@ -16,19 +16,19 @@ from zipfile import ZipFile
 datafile = "2013_ERCOT_Hourly_Load_Data"
 
 
-def open_zip(datafile):
-    with ZipFile('{0}.zip'.format(datafile), 'r') as myzip:
+def open_zip(data_file):
+    with ZipFile('{0}.zip'.format(data_file), 'r') as myzip:
         myzip.extractall()
 
 
-def parse_file(datafile):
-    workbook = xlrd.open_workbook('{0}.xls'.format(datafile))
+def parse_file(data_file):
+    workbook = xlrd.open_workbook('{0}.xls'.format(data_file))
     sheet = workbook.sheet_by_index(0)
 
-    ### example on how you can get the data
-    sheet_data = [[sheet.cell_value(r, col) for col in range(sheet.ncols)] for r in range(sheet.nrows)]
+    # example on how you can get the data
+    sheet_data = [[sheet.cell_value(rowi, coli) for coli in range(sheet.ncols)] for rowi in range(sheet.nrows)]
 
-    ### other useful methods:
+    # other useful methods:
     # print "\nROWS, COLUMNS, and CELLS:"
     # print "Number of rows in the sheet:",
     # print sheet.nrows
@@ -54,16 +54,16 @@ def parse_file(datafile):
             'avgcoast': 0,
             'maxtime': (0, 0, 0, 0, 0, 0),
             'mintime': (0, 0, 0, 0, 0, 0)
-
     }
-    exceltimes = [sheet_data[r][0] for r in range(1, len(sheet_data))]
-    ercot = [sheet_data[r][1] for r in range(1, len(sheet_data))]
-    data["maxtime"] = xlrd.xldate_as_tuple(exceltimes[ercot.index(max(ercot))], 0)
-    data["mintime"] = xlrd.xldate_as_tuple(exceltimes[ercot.index(min(ercot))], 0)
-    coastvalues = [sheet_data[r][1] for r in range(1, len(sheet_data))]
+
+    coastvalues = [sheet_data[r][1] for r in range(1, len(sheet_data))]  # COAST value is in column 1
     data["maxvalue"] = max(coastvalues)
     data["minvalue"] = min(coastvalues)
-    data["avgcoast"] = sum(coastvalues) * 1.0 / len(coastvalues)
+    data["avgcoast"] = sum(coastvalues) / float(len(coastvalues))
+
+    exceltimes = [sheet_data[r][0] for r in range(1, len(sheet_data))]  # time value is in column 0
+    data["maxtime"] = xlrd.xldate_as_tuple(exceltimes[coastvalues.index(max(coastvalues))], 0)
+    data["mintime"] = xlrd.xldate_as_tuple(exceltimes[coastvalues.index(min(coastvalues))], 0)
 
     return data
 

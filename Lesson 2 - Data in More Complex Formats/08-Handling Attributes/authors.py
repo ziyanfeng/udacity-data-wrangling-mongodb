@@ -18,13 +18,13 @@ def get_root(fname):
 
 def get_authors(root):
     authors = []
+    data = {
+        "fnm": None,
+        "snm": None,
+        "email": None,
+        "insr": []
+    }
     for author in root.findall('./fm/bibl/aug/au'):
-        data = {
-            "fnm": None,
-            "snm": None,
-            "email": None,
-            "insr": []
-        }
 
         # YOUR CODE HERE
         data["fnm"] = author.find('./fnm').text

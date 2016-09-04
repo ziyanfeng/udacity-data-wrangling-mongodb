@@ -16,13 +16,13 @@ datafile = "2013_ERCOT_Hourly_Load_Data"
 outfile = "2013_Max_Loads.csv"
 
 
-def open_zip(datafile):
-    with ZipFile('{0}.zip'.format(datafile), 'r') as myzip:
+def open_zip(data_file):
+    with ZipFile('{0}.zip'.format(data_file), 'r') as myzip:
         myzip.extractall()
 
 
-def parse_file(datafile):
-    workbook = xlrd.open_workbook('{0}.xls'.format(datafile))
+def parse_file(data_file):
+    workbook = xlrd.open_workbook('{0}.xls'.format(data_file))
     sheet = workbook.sheet_by_index(0)
     data = []
     # YOUR CODE HERE

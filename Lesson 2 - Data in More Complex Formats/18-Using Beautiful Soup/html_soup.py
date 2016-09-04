@@ -7,6 +7,7 @@
 # form field values for "__EVENTVALIDATION" and "__VIEWSTATE" and set the appropriate
 # values in the data dictionary.
 # All your changes should be in the 'extract_data' function
+
 from bs4 import BeautifulSoup
 import requests
 

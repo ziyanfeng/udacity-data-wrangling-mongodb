@@ -36,14 +36,16 @@ def parse_file(datafile):
 
     return data
 
-print parse_file(DATAFILE)
-print parse_file(DATAFILE)[9]
+
 def test():
     # a simple test of your implemetation
     datafile = os.path.join(DATADIR, DATAFILE)
     d = parse_file(datafile)
-    firstline = {'Title': 'Please Please Me', 'UK Chart Position': '1', 'Label': 'Parlophone(UK)', 'Released': '22 March 1963', 'US Chart Position': '-', 'RIAA Certification': 'Platinum', 'BPI Certification': 'Gold'}
-    tenthline = {'Title': '', 'UK Chart Position': '1', 'Label': 'Parlophone(UK)', 'Released': '10 July 1964', 'US Chart Position': '-', 'RIAA Certification': '', 'BPI Certification': 'Gold'}
+    firstline = {'Title': 'Please Please Me', 'UK Chart Position': '1', 'Label': 'Parlophone(UK)',
+                 'Released': '22 March 1963', 'US Chart Position': "\xe2\x80\x94", 'RIAA Certification': 'Platinum',
+                 'BPI Certification': 'Gold'}
+    tenthline = {'Title': '', 'UK Chart Position': '1', 'Label': 'Parlophone(UK)', 'Released': '10 July 1964',
+                 'US Chart Position': "\xe2\x80\x94", 'RIAA Certification': '', 'BPI Certification': 'Gold'}
 
     assert d[0] == firstline
     assert d[9] == tenthline

@@ -1,6 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 """
 Let's assume that you combined the code from the previous 2 exercises with code
 from the lesson on how to build requests, and downloaded all the data locally.
@@ -36,13 +35,13 @@ import os
 datadir = "data"
 
 
-def open_zip(datadir):
-    with ZipFile('{0}.zip'.format(datadir), 'r') as myzip:
+def open_zip(data_dir):
+    with ZipFile('{0}.zip'.format(data_dir), 'r') as myzip:
         myzip.extractall()
 
 
-def process_all(datadir):
-    files = os.listdir(datadir)
+def process_all(data_dir):
+    files = os.listdir(data_dir)
     return files
 
 
@@ -67,7 +66,7 @@ def process_file(f):
     You should skip the rows that contain the TOTAL data for a year.
     """
     data = []
-    info = {}
+    info = dict()
     info["courier"], info["airport"] = f[:6].split("-")
     # Note: create a new dictionary for each entry in the output data list.
     # If you use the info dictionary defined here each element in the list
