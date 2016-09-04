@@ -4,7 +4,7 @@
 
 This repository contains solutions to all quizzes and problem sets.
 
-This project requires **Python 2.7** and the following Python libraries installed:
+This coursework requires **Python 2.7** and the following Python libraries:
 
 - [os](https://docs.python.org/2/library/os.html)
 - [csv](https://docs.python.org/2/library/csv.html)
