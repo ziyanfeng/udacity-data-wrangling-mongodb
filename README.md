@@ -14,7 +14,7 @@ This project requires **Python 2.7** and the following Python libraries installe
 - [requests](http://docs.python-requests.org/en/master/)
 - [codecs](https://docs.python.org/2/library/codecs.html)
 - [xml.etree.ElementTree](https://docs.python.org/2/library/xml.etree.elementtree.html)
-- [BeautifulSouop](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)\
+- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - [pprint](https://docs.python.org/2/library/pprint.html)
 - [pymongo](https://api.mongodb.com/python/current/)
 - [re](https://docs.python.org/2/library/re.html)
